@@ -21,6 +21,5 @@ func TextGome() {
 	result := db.First(user, 1)
 	fmt.Printf("姓名：%s", result.Name())
 	db.Model(&user).Update("Password", "123456")
-	db.Commit()
 
 }

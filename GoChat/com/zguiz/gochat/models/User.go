@@ -1,6 +1,8 @@
 package bean
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
@@ -11,9 +13,9 @@ type User struct {
 	ClientIp      string
 	ClientPort    string
 	IsLoginOut    bool
-	LoginTime     uint64
-	HeartbeatTime uint64
-	LoginOutTime  uint64
+	LoginTime     string
+	HeartbeatTime string
+	LoginoutTime  string
 	DeviceInfo    string
 }
 
