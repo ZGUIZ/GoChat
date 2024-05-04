@@ -1,13 +1,13 @@
 package utils
 
 import (
-	bean "GoChat/com/zguiz/gochat/models"
 	"errors"
-	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"strings"
 )
+
+var DatabaseConn *gorm.DB
 
 func initMySql(config map[string]interface{}) {
 	//获取连接串
@@ -18,11 +18,12 @@ func initMySql(config map[string]interface{}) {
 		errors.New("数据库连接异常:" + err.Error())
 		//logrus.Error("数据库连接异常:" + err.Error())
 	}
-	user := &bean.User{}
+	/*user := &bean.User{}
 	user.Name = "狂徒张三"
 	db.Create(user)
 	result := db.First(user, 1)
-	fmt.Printf("姓名：%s", result.Name())
+	fmt.Printf("姓名：%s", result.Name())*/
+	DatabaseConn = db
 }
 
 // 组织连接串
