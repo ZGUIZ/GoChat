@@ -4,16 +4,28 @@ import (
 	"errors"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+	"log"
+	"os"
 	"strings"
+	"time"
 )
 
 var DatabaseConn *gorm.DB
 
 func initMySql(config map[string]interface{}) {
+	newLogger := logger.New(
+		log.New(os.Stdout, "\r\n", log.LstdFlags),
+		logger.Config{
+			SlowThreshold: time.Second,
+			LogLevel:      logger.Info,
+			Colorful:      true,
+		},
+	)
 	//获取连接串
 	url := getLinkUrl(config)
 	//数据库连接
-	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(url), &gorm.Config{Logger: newLogger})
 	if err != nil {
 		errors.New("数据库连接异常:" + err.Error())
 		//logrus.Error("数据库连接异常:" + err.Error())
