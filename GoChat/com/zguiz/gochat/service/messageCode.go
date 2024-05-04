@@ -1,0 +1,4 @@
+package service
+
+var MESSAGE_CODE_SUCCESS = "SUCCESS"
+var MESSAGE_CODE_ERROR = "ERROR"

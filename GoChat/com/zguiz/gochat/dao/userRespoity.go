@@ -11,3 +11,7 @@ func GetUserList() []bean.User {
 	utils.DatabaseConn.Find(&userList, param)
 	return userList
 }
+
+func RegisterUser(user bean.User) {
+	utils.DatabaseConn.Create(&user)
+}
