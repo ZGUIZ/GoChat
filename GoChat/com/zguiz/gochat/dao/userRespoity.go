@@ -5,6 +5,9 @@ import (
 	"GoChat/com/zguiz/gochat/utils"
 )
 
+/**
+ *查询所有用户
+ */
 func GetUserList() []bean.User {
 	param := &bean.User{}
 	userList := []bean.User{}
@@ -12,6 +15,9 @@ func GetUserList() []bean.User {
 	return userList
 }
 
+/**
+ * 用户注册
+ */
 func RegisterUser(user bean.User) {
 	utils.DatabaseConn.Create(&user)
 }
