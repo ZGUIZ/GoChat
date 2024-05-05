@@ -21,3 +21,14 @@ func GetUserList() []bean.User {
 func RegisterUser(user bean.User) {
 	utils.DatabaseConn.Create(&user)
 }
+
+func FindUser(user bean.User) []bean.User {
+	param := &bean.User{Name: user.Name, Password: user.Password}
+	userList := []bean.User{}
+	utils.DatabaseConn.Find(&userList, param)
+	return userList
+}
+
+func UpdateUser(user bean.User) {
+	utils.DatabaseConn.Model(&user).Updates(bean.User{Name: user.Name, Password: user.Password, Telephone: user.Telephone, Email: user.Email})
+}

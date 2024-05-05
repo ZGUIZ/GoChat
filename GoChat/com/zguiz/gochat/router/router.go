@@ -18,5 +18,7 @@ func Router() *gin.Engine {
 	r.GET("/user/getUserList", service.GetUserListService)
 	//用户注册
 	r.POST("/user/register", service.RegisUser)
+	//更新用户信息
+	r.POST("/user/updateUser", service.UpdateUser)
 	return r
 }

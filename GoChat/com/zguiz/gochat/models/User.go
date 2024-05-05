@@ -6,10 +6,10 @@ import (
 
 type User struct {
 	gorm.Model
-	Name          string
+	Name          string `validate:"required"`
 	Password      string
 	Telephone     string
-	Email         string
+	Email         string `validate:"email"`
 	ClientIp      string
 	ClientPort    string
 	IsLoginOut    bool
